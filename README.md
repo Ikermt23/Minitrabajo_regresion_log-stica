@@ -1,1 +1,1 @@
-# Minitrabajo_regresion_log-stica
+# Minitrabajo_regresion_logistica
