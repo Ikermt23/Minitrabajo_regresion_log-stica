@@ -3,10 +3,21 @@ config.py
 Configuración centralizada del proyecto
 """
 
+import os
+
+# =============================================================================
+# CARPETAS
+# =============================================================================
+DATA_DIR = "data"
+OUTPUT_DIR = "outputs"
+
+# Crear carpeta outputs si no existe
+os.makedirs(OUTPUT_DIR, exist_ok=True)
+
 # =============================================================================
 # DATOS
 # =============================================================================
-DATA_PATH = 'data/newdata.csv'
+DATA_PATH = os.path.join(DATA_DIR, "newdata.csv")
 TARGET_COL = 'is_healthy'
 
 # Variables a usar en el modelo

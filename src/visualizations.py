@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 from sklearn.metrics import roc_curve
-import config
+from src import config
 
 
 def create_all_plots(model, X_test, y_test, y_proba, y_pred, metrics, coef_df):
@@ -102,7 +102,7 @@ def create_all_plots(model, X_test, y_test, y_proba, y_pred, metrics, coef_df):
     plt.grid(True, alpha=0.3, axis='y')
     
     plt.tight_layout()
-    plt.savefig('resultados_completos.png', dpi=config.DPI, bbox_inches='tight')
+    plt.savefig(f"{config.OUTPUT_DIR}/resultados_completos.png", dpi=config.DPI)
     print("✓ Visualizaciones guardadas: resultados_completos.png")
     plt.close()
 
@@ -141,6 +141,6 @@ def plot_eda(df, stats):
     ax2.grid(True, alpha=0.3, axis='x')
     
     plt.tight_layout()
-    plt.savefig('eda_analisis.png', dpi=300, bbox_inches='tight')
+    plt.savefig(f"{config.OUTPUT_DIR}/eda_analisis.png", dpi=300, bbox_inches='tight')
     print("✓ Gráficos EDA guardados: eda_analisis.png")
     plt.close()

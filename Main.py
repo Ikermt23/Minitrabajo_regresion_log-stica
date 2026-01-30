@@ -6,11 +6,11 @@ Script principal - Ejecuta todo el pipeline de regresión logística
 import warnings
 warnings.filterwarnings('ignore')
 
-from data_processing import load_data, prepare_data, get_eda_stats
-from model import (train_model, get_coefficients, make_predictions, 
-                   evaluate_model, print_evaluation, compare_thresholds)
-from visualizations import create_all_plots, plot_eda
-import config
+from src.data_processing import load_data, prepare_data, get_eda_stats
+from src.model import train_model, get_coefficients, make_predictions, evaluate_model, print_evaluation, compare_thresholds
+from src.visualizations import create_all_plots, plot_eda
+from src import config
+
 
 print("="*80)
 print("REGRESIÓN LOGÍSTICA: PREDICCIÓN DE ESTILO DE VIDA SALUDABLE")
@@ -148,15 +148,15 @@ metrics_df = pd.DataFrame({
     'Valor': [metrics['accuracy'], metrics['precision'], metrics['recall'], 
               metrics['f1'], metrics['auc']]
 })
-metrics_df.to_csv('metricas_modelo.csv', index=False)
+metrics_df.to_csv(f"{config.OUTPUT_DIR}/metricas_modelo.csv", index=False)
 print("✓ metricas_modelo.csv")
 
 # Guardar coeficientes
-coef_df.to_csv('coeficientes_modelo.csv', index=False)
+coef_df.to_csv(f"{config.OUTPUT_DIR}/coeficientes_modelo.csv", index=False)
 print("✓ coeficientes_modelo.csv")
 
 # Guardar comparación de umbrales
-threshold_comparison.to_csv('comparacion_umbrales.csv', index=False)
+threshold_comparison.to_csv(f"{config.OUTPUT_DIR}/comparacion_umbrales.csv", index=False)
 print("✓ comparacion_umbrales.csv")
 
 print("\n" + "="*80)
